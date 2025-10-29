@@ -58,7 +58,7 @@
                         <!-- password-confirmation -->
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Password confirmation</label>
-                            <input type="password" name="password-confirmation"id="password_confirmation"
+                            <input type="password" name="password_confirmation"id="password_confirmation"
                                 class="form-control" required>
                         </div>
                         <div class="col-lg-4 col-sm-12">

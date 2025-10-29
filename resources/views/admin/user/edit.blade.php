@@ -41,25 +41,25 @@
                             <div class="col-lg-4 col-sm-6">
                                 <!-- Nama Lengkap -->
                                 <div class="mb-3">
-                                    <label for="first_name" class="form-label">First name</label>
-                                    <input type="text" name="first_name"id="first_name" class="form-control" required
-                                        value="{{ $dataPelanggan->first_name }}">
+                                    <label for="name" class="form-label">Nama Lengkap</label>
+                                    <input type="text" name="name"id="name" class="form-control" required
+                                        value="{{ $dataPelanggan->name }}">
                                 </div>
 
                                 <!-- Password -->
                                 <div class="mb-3">
-                                    <label for="last_name" class="form-label">Last name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" required
-                                        value="{{ $dataPelanggan->last_name }}">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" required
+                                        value="{{ $dataPelanggan->password }}">
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-sm-6">
                                 <!-- password-confirmation -->
                                 <div class="mb-3">
-                                    <label for="birthday" class="form-label">Birthday</label>
-                                    <input type="date" name="birthday" id="birthday" class="form-control"
-                                        value="{{ $dataPelanggan->birthday }}">
+                                    <label for="password_confirmation" class="form-label">password_confirmation</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                                        value="{{ $dataPelanggan->password_confirmation }}">
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@
                                                     </path>
                                                 </svg>
                                             </span>
-                                            <span class="sidebar-text">Pelanggan</span>
+                                            <span class="sidebar-text">User</span>
                                         </a>
                                     </li>
 
