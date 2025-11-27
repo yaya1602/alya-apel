@@ -24,8 +24,10 @@
                 <p class="mb-0">Form untuk menambahkan data user baru.</p>
             </div>
             <div>
-                <a href="{{ route('pelanggan.index') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i>
-                    Kembali</a>
+                <!-- 🔥 PERBAIKAN di sini -->
+                <a href="{{ route('user.index') }}" class="btn btn-primary">
+                    <i class="far fa-question-circle me-1"></i> Kembali
+                </a>
             </div>
         </div>
     </div>
@@ -34,11 +36,13 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form action="{{ route('user.store') }}" method="POST">
+
+                    <!-- 🔥 TAMBAHKAN enctype multipart -->
+                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         <div class="row mb-4">
                             <div class="col-lg-4 col-sm-6">
-                                <!-- Nama lengkap -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama Lengkap</label>
                                     <input type="text" name="name"id="name" class="form-control" required>
@@ -46,41 +50,42 @@
                             </div>
 
                             <div class="col-lg-4 col-sm-6">
-
-                                <!-- Password -->
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" name=" password" id="password" class="form-control" required>
+                                    <input type="password" name="password" id="password" class="form-control" required>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- password-confirmation -->
+
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Password confirmation</label>
                             <input type="password" name="password_confirmation"id="password_confirmation"
                                 class="form-control" required>
                         </div>
+
                         <div class="col-lg-4 col-sm-12">
-                            <!-- Email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" name="email" id="email" class="form-control" required>
                             </div>
 
+                            <!-- 🔥 TAMBAHKAN INPUT FOTO -->
+                            <div class="mb-3">
+                                <label for="profile_picture" class="form-label">Foto Profil</label>
+                                <input type="file" name="profile_picture" id="profile_picture" class="form-control">
+                            </div>
 
-
-                            <!-- Buttons -->
                             <div class="">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+
+                                <!-- 🔥 PERBAIKAN di sini -->
+                                <a href="{{ route('user.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
                             </div>
                         </div>
                 </div>
                 </form>
-            </div>
 
+            </div>
         </div>
-    </div>
     </div>
 @endsection

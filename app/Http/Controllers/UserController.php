@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(request $request)
     {
-        $data['dataUser'] = User::all();
+        $filterablecolumns = [''];
+        $searchablecolumns = ['name', 'email'];
+        $data['dataUser'] = User::filter($request, $filterablecolumns) 
+        ->search($request, $searchablecolumns)
+        ->paginate(10)
+        ->oneachside(2);
         return view('admin.user.index', $data);
     }
 
