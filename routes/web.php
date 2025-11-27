@@ -1,5 +1,6 @@
 <?php
 
+use MultipleUploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -46,9 +47,13 @@ Route::resource('pelanggan', PelangganController::class);
 
 Route::resource('user', UserController::class);
 
+// Profile Routes
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+// Multiple File Upload Routes
+Route::post('/upload/store', [MultipleUploadController::class, 'store'])->name('upload.store');
+Route::delete('/upload/{id}', [MultipleUploadController::class, 'destroy'])->name('upload.delete');
 

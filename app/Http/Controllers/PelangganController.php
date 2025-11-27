@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use App\Models\MultipleUpload;
+
 
 class PelangganController extends Controller
 {
@@ -52,10 +54,17 @@ class PelangganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+   public function show($id)
+{
+    $customer = Pelanggan::findOrFail($id);
+
+    $files = MultipleUpload::where('ref_table', 'pelanggan')
+                ->where('ref_id', $id)
+                ->get();
+
+    return view('admin.pelanggan.show', compact('customer', 'files'));
+}
+
 
     /**
      * Show the form for editing the specified resource.
