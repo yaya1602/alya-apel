@@ -1,25 +1,35 @@
-public function store(Request $request)
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\MultipleUpload;
+
+class MultipleUploadController extends Controller
 {
-    $request->validate([
-        'files.*' => 'required|mimes:png,jpg,jpeg,pdf,docx,xlsx,txt|max:5000',
-        'ref_table' => 'required|string',
-        'ref_id' => 'required|integer'
-    ]);
-
-    if($request->hasFile('files'))
+    public function store(Request $request)
     {
-        foreach ($request->file('files') as $file) {
+        $request->validate([
+            'files.*' => 'required|mimes:png,jpg,jpeg,pdf,docx,xlsx,txt|max:5000',
+            'ref_table' => 'required|string',
+            'ref_id' => 'required|integer'
+        ]);
 
-            $filename = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path('uploads'), $filename);
+        if($request->hasFile('files'))
+        {
+            foreach ($request->file('files') as $file) {
 
-            MultipleUpload::create([
-                'file'       => $filename,
-                'ref_table'  => $request->ref_table,
-                'ref_id'     => $request->ref_id,
-            ]);
+                $filename = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('uploads'), $filename);
+
+                MultipleUpload::create([
+                    'file'       => $filename,
+                    'ref_table'  => $request->ref_table,
+                    'ref_id'     => $request->ref_id,
+                ]);
+            }
         }
-    }
 
-    return back()->with('success', "File berhasil di-upload.");
+        return back()->with('success', "File berhasil di-upload.");
+    }
 }
